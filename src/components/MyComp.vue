@@ -1,25 +1,26 @@
 <template>
-  <div class="product-box">
-    <h2>{{ article.name }}</h2>
+  <div class="product-card">
+    <h2>{{ name }}</h2>
     <img 
-    :src="article.imageUrl"
-    width="400px"
+    :src="imageUrl"
+    width="300px"
     >
     <div class="content">
-      {{ article.text }}
+      {{ text }}
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SingleArticle',
-  props: ['article'],
+  name: 'MyComp',
+  props: ['id', 'name', 'imageUrl', 'text', 'category'],
   data() {
     return {
       
     };
   },
+
   methods: {
     
   },
@@ -27,5 +28,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>
