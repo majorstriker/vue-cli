@@ -12,7 +12,7 @@
         <input type="checkbox" id="check5" value="5" v-model="categories">
         <label for="check5">Kitchen planning</label>
         <hr>
-        <div v-for="(product, index) in products"
+        <div v-for="(product, index) in filterData"
         :key="index">
           <MyComp 
             :name="product.name"
@@ -34,6 +34,7 @@ export default {
   },
   data() {
     return {
+      categories: [],
       products: [{
                     id: 1,
                     name: 'Kitchen design',
@@ -105,9 +106,18 @@ export default {
   },
 
   methods: {
-    chooseCategory() {
-      
-    }
+
+  },
+  computed: {
+    filterData() {
+      let data = []
+      if (this.categories.length) {
+        data = this.products.filter(x => this.categories.indexOf(x.category.toString()) != -1)
+      } else {
+        data = this.products
+      }
+      return data
+    },
   },
 };
 </script>
